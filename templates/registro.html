@@ -1,0 +1,31 @@
+{% extends './base.html' %}
+
+{% block titulo %}
+Registro usuario
+{% endblock %}
+
+{% block contenido %}
+<section>
+    <h3>Registrar usuario</h3>
+    <form action="{{url_for('registrar')}}" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" autofocus required class="form-control" id="email" id="email" name="email" placeholder="tucorreo@forum.com.ve">
+        </div>
+        <div class="mb-3">
+            <label for="clave" class="form-label">Clave</label>
+            <input type="password" required class="form-control" id="clave" id="clave" name="clave" placeholder="tupassowrd">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-outline-primary">Registrar</button>
+        </div>
+    </form>
+    {% with mensajes_flash = get_flashed_messages() %}
+        {% if mensajes_flash %}
+            {% for mensaje in mensajes_flash %}
+                <li>{{ mensaje }}</li>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</section>
+{% endblock %}
